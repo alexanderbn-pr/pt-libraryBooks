@@ -1,0 +1,33 @@
+@use '../../style/mixins.scss' as *;
+
+.characters {
+  flex: 1;
+  @include d-flex(column, initial, center, 20px);
+  p {
+    text-align: center;
+  }
+  &-table {
+    width: 98%;
+    border-collapse: collapse;
+    margin: 20px auto; /* Centra la tabla horizontalmente */
+    text-align: center;
+    th {
+      background-color: #bdbbbb;
+      padding: 12px;
+      text-align: center;
+      border-bottom: 2px solid #ddd;
+    }
+    td {
+      padding: 10px;
+      border-bottom: 1px solid #ddd;
+      text-align: center;
+      vertical-align: middle;
+    }
+    tr:hover {
+      background-color: rgba(0, 0, 0, 0.05);
+    }
+  }
+  &-results {
+    @include d-flex(row, center, initial);
+  }
+}

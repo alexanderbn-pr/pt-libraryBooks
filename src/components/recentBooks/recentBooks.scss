@@ -1,0 +1,17 @@
+@use '../../style/mixins.scss' as *;
+
+.recent-books {
+  @include d-flex(row, initial, initial, 20px);
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  &-button {
+    cursor: pointer;
+    background-color: transparent;
+    border-color: transparent;
+    color: black;
+    text-decoration: underline orange 2px;
+    font-weight: normal;
+    padding: 0;
+  }
+}

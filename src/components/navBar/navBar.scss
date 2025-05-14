@@ -1,0 +1,18 @@
+@use '../../style/mixins.scss' as *;
+
+.navbar {
+  display: flex;
+  &-item {
+    color: #383641;
+    display: flex;
+  }
+  &-icon {
+    height: 20px;
+    width: 20px;
+    margin-right: 10px;
+  }
+}
+
+.navbar-item.active {
+  border-bottom: 3px solid #ffb142;
+}

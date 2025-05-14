@@ -1,0 +1,12 @@
+@use '../../style/mixins.scss' as *;
+
+.books-container {
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  flex: 1;
+  @include d-flex(column, initial, initial, 20px);
+  &-tools {
+    width: 70%;
+    @include d-flex(row, space-between, initial);
+  }
+}
