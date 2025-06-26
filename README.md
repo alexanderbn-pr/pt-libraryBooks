@@ -1,4 +1,4 @@
-# Prueba técnica para OpositaTest  
+# Prueba técnica
 
 ¡Te damos la bienvenida a la prueba técnica de OpositaTest!
 
