@@ -1,6 +1,76 @@
+# Dependencies
+node_modules/
 package-lock.json
-node_modules
-.DS_Store
-projects/**/.DS_Store
-projects/**/dist
 yarn.lock
+
+# Production
+dist/
+build/
+*.tsbuildinfo
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# IDE & Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+*.swc
+.DS_Store
+*.code-workspace
+.sublime-project
+.sublime-workspace
+
+# OS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+.pnpm-debug.log*
+
+# Testing
+coverage/
+.nyc_output/
+*.lcov
+
+# Build outputs
+dist/
+*.tsbuildinfo
+
+# Local development
+.claude/              # Claude local configuration
+.copilot/            # Copilot local configuration (optional if you want local overrides)
+.vite-inspect/       # Vite inspect output
+
+# Stats & visualization
+stats.html
+dist/stats.html
+
+# Temporary files
+*.tmp
+*.temp
+.cache/
+.parcel-cache/
+
+# Node version files
+.nvmrc.local
+
+# Git
+.git/
+
+# Package manager lock files (if using workspace)
+pnpm-lock.yaml
