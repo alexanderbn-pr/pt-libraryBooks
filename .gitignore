@@ -55,7 +55,7 @@ dist/
 .claude/              # Claude local configuration
 .copilot/            # Copilot local configuration (optional if you want local overrides)
 .vite-inspect/       # Vite inspect output
-
+.agents/              # Local agent configurations
 # Stats & visualization
 stats.html
 dist/stats.html
