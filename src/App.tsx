@@ -9,7 +9,7 @@ import { lazy, Suspense } from 'react';
 import Header from './components/header/header';
 import { ErrorBoundary } from 'react-error-boundary';
 
-const BooksContainer = lazy(() => import('./pages/booksList/BooksContainer'));
+const BooksContainer = lazy(() => import('./pages/booksList/booksContainer'));
 const BooksContainerSuspense = lazy(() => import('./pages/booksSuspense/BooksContainerSuspense'));
 const CharacterList = lazy(() => import('./pages/charactersList/charactersList'));
 
@@ -32,11 +32,11 @@ function App() {
             <ErrorBoundary fallback={<div>
               Ocurrió un error al cargar los libros con suspense
             </div>}>
-            <Suspense fallback={<div>
-                Cargando Libros skelleton libros Suspense individual
-              </div>}>
-              <BooksContainerSuspense />
-            </Suspense>
+              <Suspense fallback={<div>
+                  Cargando Libros skelleton libros Suspense individual
+                </div>}>
+                <BooksContainerSuspense />
+              </Suspense>
             </ErrorBoundary>
           } />
           <Route path="/booksContainer" element={

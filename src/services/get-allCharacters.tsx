@@ -1,15 +1,17 @@
-const API_URL = 'https://api.example.com/characters';
+// Delay artificial para testing de Suspense (remover en producción)
+const SIMULATE_DELAY = 10000; // 10 segundos
 
-export const getAllCharacters = async () => {
-  try {
-    const response = await fetch(`${API_URL}`);
-    if (!response.ok) {
-      throw new Error(`Failed to fetch characters: ${response.statusText}`);
-    }
-    const data = await response.json();
-    return data;
-  } catch (error) {
-    console.error('Error fetching all characters:', error);
-    throw error;
-  }
+const delay = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
+
+export const fetchAllCharacters = async () => {
+  // Simular delay de red para ver los fallbacks
+  await delay(SIMULATE_DELAY);
+  
+  return await fetch(
+    `https://anapioficeandfire.com/api/characters?pageSize=200`,
+  )
+    .then((res) => {
+      if (!res.ok) throw new Error('Error al obtener los personajes');
+      return res?.json();
+    })
 };

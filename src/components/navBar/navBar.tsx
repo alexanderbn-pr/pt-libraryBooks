@@ -9,12 +9,20 @@ const NavBar = () => {
   return (
     <nav className="navbar">
       <NavLink
-        to="/books"
+        to="/booksContainer"
         className={({ isActive }) => `navbar-item ${isActive ? 'active' : ''}`}
         style={{ marginRight: '30px' }}
       >
         <img className="navbar-icon" alt="Libros" src={book} />
         <span>Libros</span>
+      </NavLink>
+      <NavLink
+        to="/booksPageSuspense"
+        className={({ isActive }) => `navbar-item ${isActive ? 'active' : ''}`}
+        style={{ marginRight: '30px' }}
+      >
+        <img className="navbar-icon" alt="Libros" src={book} />
+        <span>Libros Suspense</span>
       </NavLink>
       <NavLink
         to="/characters"

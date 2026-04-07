@@ -2,7 +2,7 @@ import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { render, screen, fireEvent } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import BookComponent from './bookComponent';
-import { Book } from '@/types';
+import { Book } from '../../types';
 
 // Mock data
 const mockBook: Book = {
@@ -195,7 +195,7 @@ describe('BookComponent', () => {
     });
 
     it('stops event propagation when favorite button is clicked', async () => {
-      const { container } = render(
+      render(
         <BookComponent
           book={mockBook}
           isFavorite={false}
@@ -251,7 +251,7 @@ describe('BookComponent', () => {
     });
 
     it('handles image load failure gracefully', () => {
-      const { container } = render(
+      render(
         <BookComponent
           book={mockBook}
           isFavorite={false}

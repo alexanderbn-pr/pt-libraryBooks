@@ -1,5 +1,6 @@
 import { fetchCharacters } from '../services/get-characters';
-import { useInfiniteQuery } from '@tanstack/react-query';
+import { fetchAllCharacters } from '../services/get-allCharacters';
+import { useInfiniteQuery, useSuspenseQuery } from '@tanstack/react-query';
 
 export const useCharacters = () => {
   const {
@@ -19,6 +20,15 @@ export const useCharacters = () => {
     retry: 5,
   });
 
+  const {
+    data: allCharacters,
+  } = useSuspenseQuery({
+    queryKey: ['allCharacters'],
+    queryFn: fetchAllCharacters,
+    staleTime: 1000 * 3,
+    retry: 2,
+  });
+
   return {
     fetchNextPage,
     isLoading,
@@ -26,5 +36,6 @@ export const useCharacters = () => {
     characters: data?.pages.flatMap((page) => page.characters) ?? [],
     hasNextPage,
     isFetchingNextPage,
+    allCharacters,
   };
 };

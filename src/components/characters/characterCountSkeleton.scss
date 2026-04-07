@@ -1,25 +1,25 @@
-@import '@/style/theme.scss';
+@use '../../style/mixins.scss' as *;
 
 .character-count-skeleton {
   display: flex;
   gap: 0.5rem;
   align-items: center;
   padding: 0.5rem 1rem;
-  background: $color-surface;
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
   border-radius: 4px;
   animation: pulse 2s infinite;
 
   &__label {
     width: 70%;
     height: 1rem;
-    background: $color-border;
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
     border-radius: 4px;
   }
 
   &__count {
     width: 30%;
     height: 1rem;
-    background: $color-border;
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
     border-radius: 4px;
   }
 }

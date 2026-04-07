@@ -2,7 +2,7 @@ import '../booksList/booksPage.scss';
 import BookList from '../../components/book/bookList';
 import BookListSkeleton from '../../components/book/bookSkeleton';
 import { useBooksFilters } from '../../hooks/useBooksFilters';
-import { useBooks } from '../../hooks/useBooks';
+import { useSuspenseBooks } from '../../hooks/useSuspenseBooks';
 import { useCharacters } from '../../hooks/useCharacters';
 import { useUserInteractive } from '../../hooks/useUserInteractive';
 import Search from '../../components/search/search';
@@ -21,7 +21,7 @@ const BookListContent = ({
   isFavorite: any;
   searchName: string;
 }) => {
-  const { books } = useBooks();
+  const { books } = useSuspenseBooks();
   const bookLibrary = useBooksFilters(books);
   useEffect(() => {
     bookLibrary.setSearchName(searchName);

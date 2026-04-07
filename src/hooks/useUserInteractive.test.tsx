@@ -1,5 +1,5 @@
 import { renderHook, act } from '@testing-library/react';
-import { describe, it, expect, beforeEach, vi } from 'vitest';
+import { describe, it, expect, beforeEach } from 'vitest';
 import { useUserInteractive } from './useUserInteractive';
 import { type Book } from '../types.d';
 const mockBook: Book = {

@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
 import loading from '@/resources/icons/loadign.gif';
-
 import { Book } from '../../types';
 
 interface Props {

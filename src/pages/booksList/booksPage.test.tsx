@@ -1,6 +1,6 @@
 import { render, screen, waitFor } from '@testing-library/react';
 import { describe, it, expect, vi } from 'vitest';
-import BooksPage from './booksPage';
+import BooksContainer from './booksContainer';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { userEvent } from '@testing-library/user-event';
 
@@ -63,7 +63,7 @@ describe('BooksPage', () => {
     vi.resetAllMocks();
   });
   it('Renderiza correctamente la página', async () => {
-    renderWithQueryClient(<BooksPage />);
+    renderWithQueryClient(<BooksContainer />);
 
     expect(screen.getByPlaceholderText(/Buscar libro/i)).toBeInTheDocument();
     expect(screen.getByText(/Actualizar libros/i)).toBeInTheDocument();
@@ -73,9 +73,9 @@ describe('BooksPage', () => {
     );
   });
 
-  it('Filtra los libros por el término de búsqueda', async () => {
+  it('filter books by', async () => {
     const user = userEvent.setup();
-    renderWithQueryClient(<BooksPage />);
+    renderWithQueryClient(<BooksContainer />);
 
     await waitFor(() => {
       expect(screen.queryByText('A Dance with Dragons')).toBeInTheDocument();
@@ -92,7 +92,7 @@ describe('BooksPage', () => {
 
   it('Marcar favorito cuando se pincha en ☆', async () => {
     const user = userEvent.setup();
-    renderWithQueryClient(<BooksPage />);
+    renderWithQueryClient(<BooksContainer />);
 
     await waitFor(() => screen.getByText('A Game of Thrones'));
 
@@ -107,7 +107,7 @@ describe('BooksPage', () => {
 
   it('Al hacer click en un libro debe mostrar la ficha del libro', async () => {
     const user = userEvent.setup();
-    renderWithQueryClient(<BooksPage />);
+    renderWithQueryClient(<BooksContainer />);
 
     await waitFor(() => screen.getByText('A Game of Thrones'));
 
@@ -122,7 +122,7 @@ describe('BooksPage', () => {
   it('Cerrar el modal al pinchar en cerrar', async () => {
     const user = userEvent.setup();
 
-    renderWithQueryClient(<BooksPage />);
+    renderWithQueryClient(<BooksContainer />);
 
     await waitFor(() => screen.getByText('A Game of Thrones'));
 
@@ -143,7 +143,7 @@ describe('BooksPage', () => {
   it('Ordenar la lista de libros al pichar en Ordenar por nombre', async () => {
     const user = userEvent.setup();
 
-    renderWithQueryClient(<BooksPage />);
+    renderWithQueryClient(<BooksContainer />);
 
     await waitFor(() => screen.getByText(/A Game of Thrones/i));
 

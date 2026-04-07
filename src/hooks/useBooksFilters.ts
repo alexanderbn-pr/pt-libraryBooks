@@ -1,28 +1,15 @@
-import { type Book, SortBy, SortOption } from '../types.d';
+import { type Book, SortBy } from '../types.d';
 import { useState, useMemo } from 'react';
 import { useDebounce } from '@uidotdev/usehooks';
-import { fetchBooks } from '../services/get-books';
-import { useQuery } from '@tanstack/react-query';
 import { SORT_OPTIONS } from '../constants/books';
 
-export const useBooksFilters = () => {
+export const useBooksFilters = (books: Book[]) => {
   const [searchName, setSearchName] = useState<string>('');
   const [sorting, setSorting] = useState<SortBy>(SortBy.NONE);
   const [isSortedAsc, setIsSortedAsc] = useState<boolean>(true);
   const debouncedFilterName = useDebounce(searchName, 250);
 
-  const { data, isLoading, isError, refetch } = useQuery<Book[]>({
-    queryKey: ['books'],
-    queryFn: fetchBooks,
-    //Por si el cliente se marcha y los datos se quedan obsoletos
-    staleTime: 5 * 60 * 1000,
-    refetchOnWindowFocus: false,
-  });
-
-  const books = data || [];
-
   const filteredBooks: Book[] = useMemo(() => {
-    console.log('Filtrado de libros');
     return searchName != '' && searchName.length > 0
       ? books.filter((book: Book) => {
           return book.name.toLowerCase().includes(searchName.toLowerCase());
@@ -31,7 +18,6 @@ export const useBooksFilters = () => {
   }, [books, debouncedFilterName]);
 
   const sortedBooks: Book[] = useMemo(() => {
-    console.log('Ordenación de libros');
     if (sorting === SortBy.NONE) return filteredBooks;
 
     const compareProperties: Record<string, (book: Book) => any> = {
@@ -69,9 +55,6 @@ export const useBooksFilters = () => {
     sorting,
     isSortedAsc,
     sortOptions: SORT_OPTIONS,
-    loading: isLoading,
-    error: isError,
-    getBooks: refetch,
     toggleSortBy,
     setSearchName,
   };
